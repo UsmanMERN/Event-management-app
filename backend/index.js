@@ -5,7 +5,7 @@ const cors = require("cors");
 const { globalRateLimiter } = require("./src/middlewares/rateLimit");
 const errorHandler = require("./src/middlewares/errorHandler");
 const logger = require("./src/config/logger");
-
+const routes = require("./src/routes/index");
 
 
 
@@ -22,6 +22,8 @@ app.use(cors());
 app.use(globalRateLimiter)
 app.use(express.urlencoded({ extended: true }));
 app.use(errorHandler);
+app.use("/api", routes);
+
 
 
 app.get("/", (req, res) => {
