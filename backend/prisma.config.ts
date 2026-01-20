@@ -1,14 +1,13 @@
-// This file can be in the root of your project or in the prisma folder.
+// prisma.config.ts
 import "dotenv/config";
 import { defineConfig, env } from "prisma/config";
 
 export default defineConfig({
+  // This tells Prisma where to find your schema file
   schema: "prisma/schema.prisma",
-  migrations: {
-    path: "prisma/migrations",
-  },
+
+  // This datasource block is now the correct place for the URL
   datasource: {
-    // The 'env' function is the recommended way to access environment variables here.
     url: env("DATABASE_URL"),
   },
 });
